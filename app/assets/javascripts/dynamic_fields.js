@@ -1,4 +1,4 @@
-//= require dynamic_fields/jquery.dynamic-fields
+//= require dynamic_fields/jquery.dynamic_fields
 
 jQuery(function(){
 
