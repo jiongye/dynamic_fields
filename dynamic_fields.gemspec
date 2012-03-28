@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = DynamicFields::VERSION
   s.authors     = ["Jiongye Li"]
   s.email       = ["jiongye@gmail.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/jiongye/dynamic_fields"
   s.summary     = "Generate dynamic fields for Rails"
   s.description = "Dynamically generate fields for Rails by using jQuery."
 
