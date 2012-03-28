@@ -5,6 +5,7 @@ dynamic_fields is a rails engine, written for dynamically generating nested mode
 
 
 Installation
+-----------
 
 ### Rails 3.1
 
