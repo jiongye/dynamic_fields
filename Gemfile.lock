@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dynamic_fields (0.0.1)
+    dynamic_fields (0.1.0)
       rails (~> 3.2.2)
 
 GEM
