@@ -25,9 +25,12 @@
         item.find("input[name$='[_destroy]']").remove(); // don't need to copy the _destroy field
 
         item.find(':input').each(function(){
-          new_id = $(this).attr('id').replace(/\d/, ''+item_num);
+          if ($(this).attr('id')) {
+            new_id = $(this).attr('id').replace(/\d/, ''+item_num);
+            $(this).attr('id', new_id);
+          }
+
           new_name = $(this).attr('name').replace(/\d/, ''+item_num);
-          $(this).attr('id', new_id);
           $(this).attr('name', new_name);
           $(this).val("");
         })

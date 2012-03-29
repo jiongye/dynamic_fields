@@ -1,0 +1,31 @@
+<%= simple_form_for category do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.input :name %>
+
+  <div id="more_subcategories">Add More Subcategories</div>
+
+  <h3>Subcategories</h3>
+
+  <div id="subcategories">
+    <%= f.simple_fields_for :subcategories do |s| %>
+      <%= dynamic_fields_wrapper_for(s) do %>
+        <%= s.input :name %>
+        <%= s.input :description %>
+        <%= s.input :active, :as => :radio_buttons %>
+        <%= s.input :access_level, :collection => 1..4 %>
+        <%= s.association :available_languages, :as => :check_boxes %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+
+<% end %>
+
+
+
+

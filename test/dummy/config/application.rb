@@ -54,3 +54,4 @@ module Dummy
   end
 end
 
+require "#{Rails.root}/../factories.rb"
