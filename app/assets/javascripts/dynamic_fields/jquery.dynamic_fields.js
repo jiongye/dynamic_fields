@@ -32,7 +32,14 @@
 
           new_name = $(this).attr('name').replace(/\d/, ''+item_num);
           $(this).attr('name', new_name);
-          $(this).val("");
+          if ($(this)[0].type == 'textarea' || $(this)[0].type == 'text' || $(this)[0].type.match(/select/)){
+            $(this).val("");
+          }else if ($(this)[0].type == 'radio'){
+            $(this).attr("checked", false)
+          }else if ($(this)[0].type == 'checkbox'){
+            $(this).attr("checked", false)
+          }
+
         })
 
         item.find('label').each(function(){

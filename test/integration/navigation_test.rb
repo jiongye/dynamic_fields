@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class NavigationTest < ActiveSupport::IntegrationCase
+class NavigationTest < ActionDispatch::IntegrationTest
 
   def setup
     1.upto(4) { FactoryGirl.create(:available_language) }
@@ -22,6 +22,8 @@ class NavigationTest < ActiveSupport::IntegrationCase
     visit new_category_path
     find("#more_subcategories").click
     assert_equal 2, all('fieldset.item').size
+    assert_equal 'true', find('fieldset.item #category_subcategories_attributes_1_active_true')['value']
+    assert_equal find("fieldset.item input[name='category[subcategories_attributes][0][available_language_ids][]']:first")['value'], find("fieldset.item input[name='category[subcategories_attributes][0][available_language_ids][]']:first")['value']
   end
 
   test 'create a category with multiple subcategories' do

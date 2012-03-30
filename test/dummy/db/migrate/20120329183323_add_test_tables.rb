@@ -17,7 +17,7 @@ class AddTestTables < ActiveRecord::Migration
       t.string :name
     end
 
-    create_table :available_languages_subcategories do |t|
+    create_table :available_languages_subcategories, :id => false do |t|
       t.integer :subcategory_id
       t.integer :available_language_id
     end
