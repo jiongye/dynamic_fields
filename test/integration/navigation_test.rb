@@ -12,7 +12,7 @@ class NavigationTest < ActionDispatch::IntegrationTest
 
   test 'the new category page should render the form correctly' do
     visit new_category_path
-    assert page.has_selector?('fieldset.item')
+    assert page.has_selector?('div.nested_field')
     assert find('.remove_dynamic_field').has_content?('remove')
     assert !page.has_selector?("fieldset.item input[name*='_destroy']")
   end
@@ -21,9 +21,9 @@ class NavigationTest < ActionDispatch::IntegrationTest
     Capybara.current_driver   = :selenium
     visit new_category_path
     find("#more_subcategories").click
-    assert_equal 2, all('fieldset.item').size
-    assert_equal 'true', find('fieldset.item #category_subcategories_attributes_1_active_true')['value']
-    assert_equal find("fieldset.item input[name='category[subcategories_attributes][0][available_language_ids][]']:first")['value'], find("fieldset.item input[name='category[subcategories_attributes][0][available_language_ids][]']:first")['value']
+    assert_equal 2, all('div.nested_field').size
+    assert_equal 'true', find('#category_subcategories_attributes_1_active_true')['value']
+    assert_equal find("input[name='category[subcategories_attributes][0][available_language_ids][]']:first")['value'], find("input[name='category[subcategories_attributes][0][available_language_ids][]']:first")['value']
   end
 
   test 'create a category with multiple subcategories' do

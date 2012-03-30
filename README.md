@@ -57,6 +57,28 @@ Add this to your js file
 That is all you have to do to get it to work.
 
 
+Override Defaults
+-----------------
+
+The default wrapper node generate from `dynamic_fields_wrapper_for` is "fieldset" with class "item". 
+You can override them by passing a hash to the helper method like this:
+
+    = dynamic_fields_wrapper_for(qa, :node => 'div', :class => 'nested_field') do
+      = your code block
+      
+If you override the :class option, you will need to apply that to the Javascript as well:
+
+    $("#qas").cloneFields({
+      itemWrapper: ".nested_field"
+    })
+  
+  
+Example
+--------
+
+If you want to take a look at an example, you can checkout the dummy app that used for testing.  
+
+
 
 Copyright
 --------

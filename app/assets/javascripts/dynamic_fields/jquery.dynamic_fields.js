@@ -32,6 +32,8 @@
 
           new_name = $(this).attr('name').replace(/\d/, ''+item_num);
           $(this).attr('name', new_name);
+
+          // reset all fields
           if ($(this)[0].type == 'textarea' || $(this)[0].type == 'text' || $(this)[0].type.match(/select/)){
             $(this).val("");
           }else if ($(this)[0].type == 'radio'){
