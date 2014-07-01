@@ -25,6 +25,8 @@
         item.find("input[name$='[_destroy]']").remove(); // don't need to copy the _destroy field
 
         item.find(':input').each(function(){
+          $(this).prop('disabled', false);
+
           if ($(this).attr('id')) {
             new_id = $(this).attr('id').replace(/\d/, ''+item_num);
             $(this).attr('id', new_id);
