@@ -4,35 +4,34 @@
     var defaults = { itemWrapper: ".item" };
     var options = $.extend(defaults, opts);
 
-    return $.dynamicFields.cloneFields(this, options)
+    return $.dynamicFields.cloneFields(this, options);
+  }
+
+  $.fn.removeFields = fucntion(){
+    var $items = this.parent()
+    var destroy_field = $items.find("input[name$='[_destroy]']");
+
+    if (destroy_field[0] != undefined) {
+      if (confirm("Are you sure?")) {
+        destroy_field.val('true');
+        $items.hide();
+      }
+    }else {
+      if ($items.siblings().find(".remove_dynamic_field")[0] != undefined){
+        $items.remove();
+      }else {
+        $items.hide();
+        $items.find(":input").each(function(){
+          $(this).prop('disabled', true);
+        })
+      }
+    }
   }
 
   $.dynamicFields = {
 
     findNumber: function(str){
       return parseInt(str.replace(/[^0-9]/ig, ''));
-    },
-
-    removeFields: function(){
-      $("body").delegate(".remove_dynamic_field", 'click', function(){
-        var $items = $(this).parent()
-        var destroy_field = $items.find("input[name$='[_destroy]']");
-
-        if (destroy_field[0] != undefined) {
-          if (confirm("Are you sure?")) {
-            destroy_field.val('true');
-            $items.hide();
-          }
-        }else {
-          if ($items.siblings().find(".remove_dynamic_field")[0] != undefined)
-            $items.remove();
-          else
-            $items.hide();
-            $items.find(":input").each(function(){
-              $(this).prop('disabled', true);
-            })
-        }
-      });
     },
 
     cloneFields: function(fields, defaults){
