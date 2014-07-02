@@ -7,8 +7,8 @@
     return $.dynamicFields.cloneFields(this, options);
   }
 
-  $.fn.removeFields = fucntion(){
-    var $items = this.parent()
+  $.fn.removeFields = function(){
+    var $items = this.parent();
     var destroy_field = $items.find("input[name$='[_destroy]']");
 
     if (destroy_field[0] != undefined) {
