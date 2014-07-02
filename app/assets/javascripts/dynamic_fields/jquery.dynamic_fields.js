@@ -11,19 +11,19 @@
     var $items = this.parent();
     var destroy_field = $items.find("input[name$='[_destroy]']");
 
-    if (destroy_field[0] != undefined) {
-      if (confirm("Are you sure?")) {
+    if (confirm("Are you sure?")) {
+      if (destroy_field[0] != undefined) {
         destroy_field.val('true');
         $items.hide();
-      }
-    }else {
-      if ($items.siblings().find(".remove_dynamic_field")[0] != undefined){
-        $items.remove();
       }else {
-        $items.hide();
-        $items.find(":input").each(function(){
-          $(this).prop('disabled', true);
-        })
+        if ($items.siblings().find(".remove_dynamic_field")[0] != undefined){
+          $items.remove();
+        }else {
+          $items.hide();
+          $items.find(":input").each(function(){
+            $(this).prop('disabled', true);
+          })
+        }
       }
     }
   }
