@@ -9,7 +9,7 @@ module DynamicFieldsHelper
         concat form_object.hidden_field :_destroy
       end
 
-      concat content_tag(:div, link_to("remove", '#'), :class => 'remove_dynamic_field')
+      concat content_tag(:div, link_to("delete", '#'), :class => 'remove_dynamic_field')
 
       block.call
     end
