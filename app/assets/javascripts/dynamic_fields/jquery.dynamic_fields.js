@@ -1,7 +1,7 @@
 (function($) {
 
   $.fn.cloneFields = function(opts){
-    var defaults = { itemWrapper: ".item" };
+    var defaults = { itemWrapper: ".item", skipContainer: '.your-container' };
     var options = $.extend(defaults, opts);
 
     return $.dynamicFields.cloneFields(this, options);
@@ -37,11 +37,12 @@
       return parseInt(str.replace(/[^0-9]/ig, ''));
     },
 
-    cloneFields: function(fields, defaults){
-      var origin = fields.find(defaults.itemWrapper + ":last");
+    cloneFields: function(fields, options){
+      var origin = fields.find(options.itemWrapper + ":last");
 
       if (origin[0] != undefined) {
         var item = origin.clone().show();
+        item.find(options.skipContainer).remove();
         var item_num = $.dynamicFields.findNumber(item.find(':input:first').attr('id')) + 1;
         var new_id;
         var new_name;
@@ -56,8 +57,10 @@
             $(this).attr('id', new_id);
           }
 
-          new_name = $(this).attr('name').replace(/\d/, ''+item_num);
-          $(this).attr('name', new_name);
+          if ($(this).attr('name')){
+            new_name = $(this).attr('name').replace(/\d/, ''+item_num);
+            $(this).attr('name', new_name);
+          }
 
           // reset all fields
           if ($(this)[0].type == 'textarea' || $(this)[0].type == 'text' || $(this)[0].type.match(/select/)){
