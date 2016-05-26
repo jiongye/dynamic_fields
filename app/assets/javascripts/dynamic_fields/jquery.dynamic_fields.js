@@ -7,11 +7,14 @@
     return $.dynamicFields.cloneFields(this, options);
   }
 
-  $.fn.removeFields = function(){
+  $.fn.removeFields = function(opts){
+    var defaults = { confirmationMessage: 'Are you sure?' };
+    var options = $.extend(defaults, opts);
+
     var $items = this.parent();
     var destroy_field = $items.find("input[name$='[_destroy]']");
 
-    if (confirm("Are you sure?")) {
+    if (confirm(options.confirmationMessage)) {
       if (destroy_field[0] != undefined) {
         destroy_field.val('true');
         $items.hide();
@@ -25,9 +28,9 @@
           })
         }
       }
-      return true
+      return true;
     }else{
-      return false
+      return false;
     }
   }
 
@@ -66,9 +69,9 @@
           if ($(this)[0].type == 'textarea' || $(this)[0].type == 'text' || $(this)[0].type.match(/select/)){
             $(this).val("");
           }else if ($(this)[0].type == 'radio'){
-            $(this).attr("checked", false)
+            $(this).attr("checked", false);
           }else if ($(this)[0].type == 'checkbox'){
-            $(this).attr("checked", false)
+            $(this).attr("checked", false);
           }
 
         })
