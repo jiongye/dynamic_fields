@@ -5,7 +5,7 @@
     var options = $.extend(defaults, opts);
 
     return $.dynamicFields.cloneFields(this, options);
-  }
+  };
 
   $.fn.removeFields = function(opts){
     var defaults = { confirmationMessage: 'Are you sure?' };
@@ -32,7 +32,7 @@
     }else{
       return false;
     }
-  }
+  };
 
   $.dynamicFields = {
 
@@ -74,14 +74,14 @@
             $(this).attr("checked", false);
           }
 
-        })
+        });
 
         item.find('label').each(function(){
           if ($(this).attr('for')){
             new_id = $(this).attr('for').replace(/\d/, ''+item_num);
             $(this).attr('for', new_id);
           }
-        })
+        });
 
         item.insertAfter(origin);
         return item;
