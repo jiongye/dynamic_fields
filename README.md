@@ -78,8 +78,8 @@ If you override the :class option, you will need to apply that to the Javascript
       itemWrapper: ".nested_field"
     })
 
-The removeFields may accept a hash of options as parameter. To change the confirmation message,
-set the confirmationMessage value in the options hash. The default confirmation message is "Are you sure?".
+The `removeFields` method may accept a hash of options as parameter. To change the confirmation message,
+set the `confirmationMessage` value in the options hash. The default confirmation message is "Are you sure?".
 
     $("body").delegate ".remove_dynamic_field", 'click', ->
       $(this).removeFields({confirmationMessage: 'Deleting a record may have dire consequences; are you sure?'})
